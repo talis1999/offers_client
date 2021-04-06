@@ -7,6 +7,6 @@ function App() {
     </AuthProvider>
   );
 }
-//Todo - make a provider - > login + register -> navbar + homePage + itemComponent - > add component form
+//Todo register -> navbar + homePage + itemComponent - > add component form
 
 export default App;

@@ -11,7 +11,7 @@ export default function Root() {
     <Router>
       <Switch>
         <Route path="/" exact component={loggedIn ? Home : Login} />
-        <Route path="/register" component={Register} />
+        {!loggedIn && <Route path="/register" component={Register} />}
         <Route render={() => <h1>404: page not found</h1>} />
       </Switch>
     </Router>
