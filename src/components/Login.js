@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -33,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
     margin: "16px 0px",
     border: "#d94b3d 1px solid",
     color: "#d94b3d",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#0078d4",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
 }));
 
@@ -110,6 +118,9 @@ const Login = () => {
         >
           Login
         </Button>
+        <Link className={classes.link} to="/register">
+          Register
+        </Link>
       </Card>
     </form>
   );
