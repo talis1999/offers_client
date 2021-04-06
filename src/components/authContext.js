@@ -2,11 +2,11 @@ import { useState, createContext } from "react";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = (props) => {
+export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(sessionStorage.getItem("loggedIn"));
   return (
     <AuthContext.Provider value={[loggedIn, setLoggedIn]}>
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 };

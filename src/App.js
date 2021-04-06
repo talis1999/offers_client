@@ -1,9 +1,12 @@
 import Root from "./components/Root";
 import { AuthProvider } from "./components/AuthContext";
+import { OffersProvider } from "./components/OffersProvider";
 function App() {
   return (
     <AuthProvider>
-      <Root />
+      <OffersProvider>
+        <Root />
+      </OffersProvider>
     </AuthProvider>
   );
 }
