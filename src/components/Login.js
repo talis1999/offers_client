@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "./authContext";
+import { AuthContext } from "./AuthContext";
 import cogoToast from "cogo-toast";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -65,6 +65,9 @@ const Login = () => {
         const token = res.data;
         Cookies.set("token", token, { expires: 1 });
         setLoggedIn(true);
+
+        sessionStorage.setItem("loggedIn", true);
+
         success("Logged in successfully");
       } catch (e) {
         error("Invalid email/ password");

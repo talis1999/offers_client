@@ -1,5 +1,5 @@
 import Root from "./components/Root";
-import { AuthProvider } from "./components/authContext";
+import { AuthProvider } from "./components/AuthContext";
 function App() {
   return (
     <AuthProvider>
