@@ -1,4 +1,11 @@
-import { useReducer, useEffect, createContext, useContext } from "react";
+import {
+  useState,
+  useReducer,
+  useEffect,
+  createContext,
+  useContext,
+  useMemo,
+} from "react";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -24,7 +31,8 @@ export const OffersProvider = ({ children }) => {
   const [offers, offersDispatch] = useReducer(offersReduser, {
     offers: [],
   });
-
+  const [filtheredOffers, setFiltheredOffers] = useState([]);
+  const [type, setType] = useState("");
   const addOffer = async (offer) => {
     try {
       const res = await axios.post("http://localhost:8080/offers", offer, {
@@ -68,8 +76,16 @@ export const OffersProvider = ({ children }) => {
     }
   }, [loggedIn]);
 
+  useMemo(async () => {
+    setFiltheredOffers(
+      await offers.filter((offer) => offer.type.includes(type))
+    );
+  }, [offers, type]);
+
   return (
-    <OffersContext.Provider value={[offers, offersDispatch, addOffer]}>
+    <OffersContext.Provider
+      value={[offers, offersDispatch, addOffer, type, setType, filtheredOffers]}
+    >
       {children}
     </OffersContext.Provider>
   );
