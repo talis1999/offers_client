@@ -4,14 +4,18 @@ import { OffersContext } from "./OffersProvider";
 import OfferCard from "./OfferCard";
 import AddOffer from "./AddOffer";
 import { makeStyles } from "@material-ui/core/styles";
+import NavBar from "./NavBar";
+import { Divider } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   cardsWrap: {
     display: "flex",
     flexWrap: "wrap",
     overflowY: "auto",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    padding: "8px",
   },
+  offset: theme.mixins.toolbar,
 }));
 
 export default function Home() {
@@ -27,14 +31,11 @@ export default function Home() {
     generateOfferList();
   }, [filtheredOffers]);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-      }}
-    >
+    <div>
       <AppBar />
+      <div className={classes.offset} />
+      <NavBar />
+      <Divider />
       <div className={classes.cardsWrap}>{offerList}</div>
       <AddOffer />
     </div>

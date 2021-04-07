@@ -81,7 +81,6 @@ export const OffersProvider = ({ children }) => {
     setFiltheredOffers(
       await offersState.offers.filter((offer) => offer.type.includes(type))
     );
-    console.log("boom");
   }, [offersState.offers, type]);
 
   return (
