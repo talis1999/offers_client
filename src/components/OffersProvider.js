@@ -6,7 +6,7 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import Cookies from "js-cookie";
 import cogoToast from "cogo-toast";
@@ -84,7 +84,14 @@ export const OffersProvider = ({ children }) => {
 
   return (
     <OffersContext.Provider
-      value={[offers, offersDispatch, addOffer, type, setType, filtheredOffers]}
+      value={{
+        offers,
+        offersDispatch,
+        addOffer,
+        type,
+        setType,
+        filtheredOffers,
+      }}
     >
       {children}
     </OffersContext.Provider>

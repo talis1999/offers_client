@@ -1,5 +1,5 @@
 import Root from "./components/Root";
-import { AuthProvider } from "./components/AuthContext";
+import { AuthProvider } from "./components/AuthProvider";
 import { OffersProvider } from "./components/OffersProvider";
 function App() {
   return (

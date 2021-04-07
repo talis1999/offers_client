@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./AuthProvider";
 import cogoToast from "cogo-toast";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";

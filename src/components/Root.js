@@ -3,7 +3,7 @@ import { useContext } from "react";
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./AuthProvider";
 
 export default function Root() {
   const [loggedIn] = useContext(AuthContext);
