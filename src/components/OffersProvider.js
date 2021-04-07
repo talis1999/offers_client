@@ -78,7 +78,7 @@ export const OffersProvider = ({ children }) => {
 
   useMemo(async () => {
     setFiltheredOffers(
-      await offers.filter((offer) => offer.type.includes(type))
+      await offers.offers.filter((offer) => offer.type.includes(type))
     );
   }, [offers, type]);
 
