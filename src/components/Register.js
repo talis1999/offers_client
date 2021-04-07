@@ -55,7 +55,7 @@ const Register = () => {
 
     if (password.length === 0) newErrors.password = "This field is required";
     else if (password.length < 6)
-      newErrors.casualties = "This password is too short";
+      newErrors.password = "This password is too short";
 
     if (phone.length === 0) newErrors.phone = "This field is required";
     else if (

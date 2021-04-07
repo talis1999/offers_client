@@ -28,18 +28,19 @@ export const OffersProvider = ({ children }) => {
         return state;
     }
   };
-  const [offers, offersDispatch] = useReducer(offersReduser, {
+  const [offersState, offersDispatch] = useReducer(offersReduser, {
     offers: [],
   });
   const [filtheredOffers, setFiltheredOffers] = useState([]);
   const [type, setType] = useState("");
+
   const addOffer = async (offer) => {
     try {
       const res = await axios.post("http://localhost:8080/offers", offer, {
         headers: { Authorization: `Bearer ${Cookies.get("token")}` },
       });
       const newOffer = res.data;
-      offersDispatch({ type: "addOffers", payload: { newOffer } });
+      offersDispatch({ type: "addOffer", payload: { newOffer } });
       success("Offer has been added");
     } catch (err) {
       if (err.response.status === 401) {
@@ -78,14 +79,15 @@ export const OffersProvider = ({ children }) => {
 
   useMemo(async () => {
     setFiltheredOffers(
-      await offers.offers.filter((offer) => offer.type.includes(type))
+      await offersState.offers.filter((offer) => offer.type.includes(type))
     );
-  }, [offers, type]);
+    console.log("boom");
+  }, [offersState.offers, type]);
 
   return (
     <OffersContext.Provider
       value={{
-        offers,
+        offers: offersState.offers,
         offersDispatch,
         addOffer,
         type,

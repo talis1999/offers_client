@@ -2,8 +2,20 @@ import AppBar from "./AppBar";
 import { useContext, useState, useMemo } from "react";
 import { OffersContext } from "./OffersProvider";
 import OfferCard from "./OfferCard";
+import AddOffer from "./AddOffer";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  cardsWrap: {
+    display: "flex",
+    flexWrap: "wrap",
+    overflowY: "auto",
+    justifyContent: "space-between",
+  },
+}));
 
 export default function Home() {
+  const classes = useStyles();
   const { filtheredOffers } = useContext(OffersContext);
   const [offerList, setOfferList] = useState([]);
 
@@ -11,11 +23,20 @@ export default function Home() {
     const offerCards = filtheredOffers.map((offer) => <OfferCard {...offer} />);
     setOfferList(offerCards);
   };
-  useMemo(() => generateOfferList(), [filtheredOffers]);
+  useMemo(() => {
+    generateOfferList();
+  }, [filtheredOffers]);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
+      }}
+    >
       <AppBar />
-      {offerList}
+      <div className={classes.cardsWrap}>{offerList}</div>
+      <AddOffer />
     </div>
   );
 }
